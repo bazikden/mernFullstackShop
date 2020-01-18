@@ -2,6 +2,10 @@ const express = require('express')
 const router = express.Router()
 const Food = require('../models/Food')
 const auth = require('../middleware/auth')
+const multer = require('multer')
+const storage = require('../engine/storage')
+const upload = multer({storage})
+const fs = require('fs')
 
 // Method   GET
 // Descr    Get All Items
@@ -18,17 +22,32 @@ router.get('/',(req,res)=>{
 // Descr    Post Item
 // Acsess   Private
 
-router.post('/',auth,(req,res)=>{
-    const {name} = req.body
-    if(!req.headers['content-type'] || req.headers['content-type'] !== 'application/json'){
+router.post('/',upload.single("img"),(req,res,next)=>{
+    console.log(req.file)
+    console.log(req.body)
+    const {name,category} = req.body
+
+    if(!req.headers['content-type'] ){
         return res.status(400).json({msg:"Content-Type Needed"})
     }
-    const newItem = new Food({name})
+
+
+    const newItem = new Food({
+        name,
+        category,
+        img:{
+            data:fs.readFileSync(req.file.path),
+            contentType:req.file.mimetype
+        }
+        })
+
     newItem.save()
-        .then( ()=>res.status(201).json(newItem))
-        .catch( err => res.status(400).json(err))
+        .then(()=>res.status(201).json(newItem))
+        .catch( err => res.status(400).json({msg:"Failed",err}))
 
 })
+
+
 
 // Method   DELETE
 // Descr    Delete Item

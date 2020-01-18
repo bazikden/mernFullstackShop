@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {Alert, Button, Input, Label, Modal, ModalBody, ModalFooter, ModalHeader, Nav} from "reactstrap";
+import {Alert, Button, Input, Label, Modal, ModalBody, ModalFooter, ModalHeader} from "reactstrap";
 import {connect} from "react-redux";
 import {signUp, toggleSignUpModal} from "../../redux/actions/authActions";
 
@@ -23,7 +23,7 @@ const SignUpModal = ({modal,toggleSignUpModal,signUp,errors}) =>{
         setData({...data,[e.target.name]:e.target.value})
 
     }
-    const toggleModal =({signUp})=>{
+    const toggleModal =()=>{
         toggleSignUpModal()
     }
 

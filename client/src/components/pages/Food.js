@@ -17,7 +17,12 @@ const Food = ({items,addAllFood}) =>{
 
                 {
                     items.map(item =>(
-                        <ItemCard key={item._id} name={item.name} src={smile}/>
+                        <ItemCard
+                            key={item._id}
+                            category={item.category}
+                            name={item.name}
+                            src={item.img || smile}
+                        />
                     ))
                 }
             </div>

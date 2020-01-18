@@ -1,4 +1,4 @@
-import {LOGIN_MODAL, SET_STATUS, SIGN_UP, SIGN_UP_MODAL} from "./type";
+import {LOGIN_MODAL, SIGN_UP, SIGN_UP_MODAL} from "./type";
 
 const initialState = {
     signUpModal:false,
