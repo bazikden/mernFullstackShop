@@ -6,15 +6,13 @@ import { addAllFood } from '../../redux/actions/foodActions'
 
 
 const Food = ({items,addAllFood}) =>{
-
     useEffect(()=>{
         addAllFood()
-    },[])
+    },[addAllFood])
 
     return(
         <div className='container'>
             <div className='d-flex flex-wrap justify-content-around'>
-
                 {
                     items.map(item =>(
                         <ItemCard

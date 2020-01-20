@@ -22,7 +22,6 @@ const AddItemForm = (props) => {
         formData.append("img", data.file)
         formData.append("category", data.itemCategory)
 
-        console.log(formData)
 
         axios.post('/food', formData, {
             headers: {
