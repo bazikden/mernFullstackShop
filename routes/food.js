@@ -6,14 +6,21 @@ const multer = require('multer')
 const storage = require('../engine/storage')
 const upload = multer({storage})
 const fs = require('fs')
+const mongoosePaginate = require('mongoose-paginate')
+
 
 // Method   GET
 // Descr    Get All Items
 // Acsess   Public
 
-router.get('/',(req,res)=>{
-    Food.find()
-        .sort({date:-1})
+router.get('/:id',(req,res)=>{
+    const options = {
+        page: req.params.id,
+        limit: 4
+    }
+
+
+    Food.paginate({},options)
         .then(items => res.json(items))
         .catch(err => res.status(400).json({msg:err}))
 })
@@ -22,7 +29,7 @@ router.get('/',(req,res)=>{
 // Descr    Post Item
 // Acsess   Private
 
-router.post('/',upload.single("img"),(req,res,next)=>{
+router.post('/',upload.single("img"),auth,(req,res,next)=>{
     console.log(req.file)
     console.log(req.body)
     const {name,category} = req.body

@@ -1,11 +1,12 @@
-import {LOGIN, LOGIN_MODAL, LOGOUT, SIGN_UP, SIGN_UP_MODAL} from "./type";
+import {IS_LOADING, LOGIN, LOGIN_MODAL, LOGOUT, SIGN_UP, SIGN_UP_MODAL} from "./type";
 
 const initialState = {
     signUpModal:false,
     loginModal:false,
     isAuth:false,
     loginedUser:null,
-    token:null
+    token:null,
+    isLoading:false
 
 }
 
@@ -44,6 +45,12 @@ export const AuthReducer = (state=initialState,action)=>{
                 isAuth: false,
                 loginedUser: null,
                 token:null
+            }
+
+        case IS_LOADING:
+            return {
+                ...state,
+                isLoading:!state.isLoading
             }
 
         default:

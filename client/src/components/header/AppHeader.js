@@ -27,7 +27,7 @@ const AppNavbar = ({toggleSignUpModal,toggleLoginModal,logined,loginedUser,logOu
 
 
   return (
-    <div>
+    <div className='sticky-top'>
       <Navbar color="success" dark expand="md">
         <NavbarBrand href="/">Home Shop</NavbarBrand>
         <NavbarToggler onClick={toggle} />

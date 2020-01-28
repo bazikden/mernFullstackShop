@@ -64,7 +64,7 @@ const Slider = (props) => {
   const slides = items.map((item) => {
     return (
       <CarouselItem
-        className="custom-tag"
+        className="custom-tag mb-5"
         tag="div"
         key={item.id}
         onExiting={() => setAnimating(true)}

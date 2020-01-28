@@ -16,7 +16,7 @@ const App = () => {
                     <Switch>
                         <Route path='/food' render={()=><Food/>}/>
                         <Route path='/addItem' render={()=><AddItemForm/>}/>
-                    </Switch>    
+                    </Switch>
                 </div>
             <SignUpModal/>
             <LoginModal/>

@@ -1,5 +1,6 @@
 //FOOD
 export const ADD_ALL_FOOD = "ADD_ALL_FOOD"
+export const IS_LOADING = "IS_LOADING"
 
 //AUTH
 export const SIGN_UP_MODAL = "SIGN_UP_MODAL"

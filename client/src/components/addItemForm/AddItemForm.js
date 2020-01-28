@@ -1,8 +1,11 @@
 import React, {useState} from 'react';
 import {Button, Form, FormGroup, Label, Input} from 'reactstrap';
 import axios from 'axios'
+import {connect} from "react-redux";
+import {Redirect} from "react-router";
 
-const AddItemForm = (props) => {
+const AddItemForm = ({token}) => {
+
     const [data, setData] = useState({})
     const onFileChange = (e) => {
         setData({...data, file: e.target.files[0]})
@@ -25,17 +28,20 @@ const AddItemForm = (props) => {
 
         axios.post('/food', formData, {
             headers: {
-                "Content-Type": "multipart/form-data"
+                "Content-Type": "multipart/form-data",
+                "Authorization": token
             }
         }).then(res => console.log(res))
     }
-
+    if (!token) return <Redirect to="/food"/>
     return (
         <div className='container'>
             <Form onSubmit={onSubmit}>
                 <FormGroup>
                     <Label for="exampleSelect">Select</Label>
-                    <Input onChange={onCategorySelect} type="select" placeholder="Chose a category" name="select" id="exampleSelect">
+                    <Input defaultValue=""  onChange={onCategorySelect} type="select" placeholder="Choose a category" name="select"
+                           id="exampleSelect">
+                        <option value="" disabled>Choose a category</option>
                         <option>Food</option>
                         <option>Kitchen</option>
                         <option>Chemicals</option>
@@ -77,16 +83,14 @@ const AddItemForm = (props) => {
                             </label>
                         </div>
                     </div>
-                    <button type="submit" className="btn btn-primary">
-                        Upload
-                    </button>
                 </FormGroup>
-
-                <Button>Submit</Button>
+                <Button type='submit'>Submit</Button>
             </Form>
         </div>
 
     );
 }
-
-export default AddItemForm;
+const mapStateToProps = state => ({
+    token: state.auth.token
+})
+export default connect(mapStateToProps)(AddItemForm)

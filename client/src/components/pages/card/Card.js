@@ -6,7 +6,7 @@ import {
 
 const ItemCard = ({name,src,category}) => {
   return (
-    <div  className='mx-1 w-25 mb-3'>
+    <div  className='mx-1  mb-3'>
       <Card className='border-2 rounded'>
         <CardImg top width="100%" src={src} alt="Card image cap" />
         <CardBody>
