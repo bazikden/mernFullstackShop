@@ -1,25 +1,25 @@
 import {IS_LOADING, LOGIN, LOGIN_MODAL, LOGOUT, SIGN_UP, SIGN_UP_MODAL} from "./type";
 
 const initialState = {
-    signUpModal:false,
-    loginModal:false,
-    isAuth:false,
-    loginedUser:null,
-    token:null,
-    isLoading:false
+    signUpModal: false,
+    loginModal: false,
+    isAuth: false,
+    loginedUser: null,
+    token: null,
+    isLoading: false
 
 }
 
-export const AuthReducer = (state=initialState,action)=>{
+export const AuthReducer = (state = initialState, action) => {
     switch (action.type) {
         case SIGN_UP_MODAL:
-            return{
+            return {
                 ...state,
                 signUpModal: !state.signUpModal
             }
 
         case LOGIN_MODAL:
-            return{
+            return {
                 ...state,
                 loginModal: !state.loginModal
             }
@@ -34,8 +34,8 @@ export const AuthReducer = (state=initialState,action)=>{
         case LOGIN:
             return {
                 ...state,
-                token:action.payload.token,
-                loginedUser:action.payload.user,
+                token: action.payload.token,
+                loginedUser: action.payload.user,
                 isAuth: true
             }
 
@@ -44,13 +44,13 @@ export const AuthReducer = (state=initialState,action)=>{
                 ...state,
                 isAuth: false,
                 loginedUser: null,
-                token:null
+                token: null
             }
 
         case IS_LOADING:
             return {
                 ...state,
-                isLoading:!state.isLoading
+                isLoading: !state.isLoading
             }
 
         default:

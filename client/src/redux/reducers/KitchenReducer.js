@@ -1,13 +1,13 @@
-import {ADD_ALL_FOOD} from "./type"
+import {ADD_ALL_KITCHEN} from "./type"
 
 const initialState = {
     items: []
 }
 
 
-export const foodReducer = (state = initialState, action) => {
+export const kitchenReducer = (state = initialState, action) => {
     switch (action.type) {
-        case ADD_ALL_FOOD:
+        case ADD_ALL_KITCHEN:
             return {
                 ...state,
                 items: action.payload

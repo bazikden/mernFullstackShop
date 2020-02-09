@@ -1,4 +1,4 @@
-import {ADD_ALL_FOOD} from "../reducers/type"
+import {ADD_ALL_KITCHEN} from "../reducers/type"
 import axios from 'axios'
 import {isLoading} from "./authActions";
 
@@ -10,9 +10,9 @@ export const arrayBufferToBase64 = (buffer) => {
 }
 
 
-export const addAllFood = (page = 1) => dispatch => {
+export const addAllKitchen = (page = 1) => dispatch => {
     dispatch(isLoading())
-    axios.get(`/food/${page}`,)
+    axios.get(`/kitchen/${page}`,)
         .then(res => {
             res.data.docs.map(item => {
                 const base64Flag = 'data:image/jpeg;base64,'
@@ -20,7 +20,7 @@ export const addAllFood = (page = 1) => dispatch => {
                 item.img = base64Flag + imageStr
                 return item
             })
-            dispatch({type: ADD_ALL_FOOD, payload: res.data})
+            dispatch({type: ADD_ALL_KITCHEN, payload: res.data})
             dispatch(isLoading())
         })
 

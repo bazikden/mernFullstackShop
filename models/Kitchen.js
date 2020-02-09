@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const aggregatePaginate = require('mongoose-paginate')
 
-const Food = new mongoose.Schema({
+const Kitchen = new mongoose.Schema({
     name:{type:String,required:true,trim:true},
     category: {type:String},
     img:{data:Buffer,contentType:String},
@@ -9,6 +9,6 @@ const Food = new mongoose.Schema({
     price:{type:Number,trim: true}
 })
 
-Food.plugin(aggregatePaginate)
+Kitchen.plugin(aggregatePaginate)
 
-module.exports = mongoose.model('Food',Food)
+module.exports = mongoose.model('Kitchen',Kitchen)

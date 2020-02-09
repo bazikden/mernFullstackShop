@@ -30,9 +30,10 @@ const PaginationBar = ({pagesCount, addAllFood, activePage}) => {
                 {
                     pages && pages.map((item, i) => (
 
-                        <PaginationItem className={activePage === item ?'active':null} onClick={() => onPageClick(item)}
+                        <PaginationItem className={activePage === item ? 'active' : null}
+                                        onClick={() => onPageClick(item)}
                                         key={'page_' + i}>
-                            <PaginationLink href="#">
+                            <PaginationLink>
                                 {item}
                             </PaginationLink>
                         </PaginationItem>

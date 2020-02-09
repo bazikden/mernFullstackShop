@@ -1,12 +1,11 @@
 const express = require('express')
 const router = express.Router()
-const Food = require('../models/Food')
+const Kitchen = require('../models/Kitchen')
 const auth = require('../middleware/auth')
 const multer = require('multer')
 const storage = require('../engine/storage')
 const upload = multer({storage})
 const fs = require('fs')
-
 
 // Method   GET
 // Descr    Get All Items
@@ -15,12 +14,12 @@ const fs = require('fs')
 router.get('/:id', (req, res) => {
     const options = {
         page: req.params.id,
-        limit: 6,
+        limit: 2,
         sort:{date:-1}
     }
 
 
-    Food.paginate({}, options)
+    Kitchen.paginate({}, options)
         .then(items => res.json(items))
         .catch(err => res.status(400).json({msg: err}))
 })
@@ -31,19 +30,19 @@ router.get('/:id', (req, res) => {
 
 router.post('/', upload.single("img"),  (req, res, next) => {
 
-    const {name, category,price} = req.body
+    const {name, category, price} = req.body
 
     if (!req.headers['content-type']) {
         return res.status(400).json({msg: "Content-Type Needed"})
     }
 
     // Validation
-
     if(!req.file || !name || !category ){
-       return  res.status(400).json({msg:"Enter All Fields"})
+        return  res.status(400).json({msg:"Enter All Fields"})
     }
 
-    const newItem = new Food({
+
+    const newItem = new Kitchen({
         name,
         category,
         img: {
@@ -65,7 +64,7 @@ router.post('/', upload.single("img"),  (req, res, next) => {
 // Acsess   Private
 
 router.delete('/:id', auth, (req, res) => {
-    Food.findById(req.params.id)
+    Kitchen.findById(req.params.id)
         .then(item => item.remove()
             .then(() => res.json({msg: 'Deleted'})))
         .catch(() => res.status(404).json({msg: "There is no such item"}))
