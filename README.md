@@ -6,4 +6,4 @@
 2. In client folder run npm install
 3. Then in main folder run npm run dev
 
-### P.S Project isn`t completly ready and I bad Deziner
+### P.S Project isn`t completly ready and I am not good Desiner )))
