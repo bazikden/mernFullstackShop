@@ -1,4 +1,4 @@
-import { IS_LOADING, LOGIN, LOGIN_MODAL, LOGOUT, SIGN_UP, SIGN_UP_MODAL} from "../reducers/type";
+import {INFO, INFO_MODAL, IS_LOADING, LOGIN, LOGIN_MODAL, LOGOUT, SIGN_UP, SIGN_UP_MODAL} from "../reducers/type";
 import axios from "axios";
 import {clearErrors, getErrors} from "./errorsActions";
 
@@ -16,6 +16,7 @@ export const signUp = data => dispatch => {
         .then(res => {
             dispatch({type: SIGN_UP, payload: res})
             dispatch(clearErrors())
+            dispatch({type:SIGN_UP_MODAL})
         })
         .catch(err => {
             err.response && dispatch(getErrors(err.response.data.msg, err.response.status))
@@ -49,5 +50,13 @@ export const logOut = () => dispatch => {
 }
 
 export const isLoading = () => ({type: IS_LOADING})
+
+export const toggleInfoModal = () => dispatch=>{
+    dispatch({type:INFO_MODAL})
+}
+
+export const getInfo = text => dispatch => {
+    dispatch({type:INFO,payload:text})
+}
 
 

@@ -34,7 +34,7 @@ const AppNavbar = ({toggleSignUpModal, toggleLoginModal, toggleCartModal, logine
 
     return (
         <div className='sticky-top'>
-            <Navbar color="success" dark expand="md">
+            <Navbar color="primary" dark expand="md">
                 <NavbarBrand href="/">Home Shop</NavbarBrand>
                 <NavbarToggler onClick={toggle}/>
                 <Collapse isOpen={isOpen} navbar>
@@ -45,9 +45,7 @@ const AppNavbar = ({toggleSignUpModal, toggleLoginModal, toggleCartModal, logine
                         <NavItem>
                             <NavLink style={styles.links} to="/kitchen">Kitchen</NavLink>
                         </NavItem>
-                        <NavItem>
-                            <NavLink style={styles.links} to="/chemicals">Chemicals</NavLink>
-                        </NavItem>
+
                     </Nav>
                     <NavItem style={styles.cart} >
                         {

@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {Button, Form, FormGroup, Label, Input,Alert} from 'reactstrap';
 import axios from 'axios'
 import {connect} from "react-redux";
-import {Redirect} from "react-router";
+
 
 const categories ={
     food:["Молочная продукция","Чай","Бакалея","Масло","Хлеб"],

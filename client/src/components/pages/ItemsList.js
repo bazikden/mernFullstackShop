@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect} from 'react'
 import ItemCard from './card/Card'
 import {smile} from '../../images/images'
 import Loader from 'react-loader-spinner'
@@ -39,6 +39,7 @@ const ItemsList = ({items, addAllItems, isLoading}) => {
                             name={item.name}
                             price={item.price || 0}
                             src={item.img || smile}
+                            page={items.page}
                         />
                     ))
                 }

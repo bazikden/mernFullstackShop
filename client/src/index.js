@@ -8,10 +8,11 @@ import {
 } from "react-router-dom";
 import store from './store'
 
+
 ReactDom.render(
     <Router>
         <Provider store={store}>
-            <App/>
+            <App />
         </Provider>
     </Router>
 

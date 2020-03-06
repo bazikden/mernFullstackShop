@@ -18,11 +18,11 @@ const styles = {
 
 const SignUpModal = ({modal, toggleSignUpModal, signUp, errors, history}) => {
     const [data, setData] = useState({})
+
     const onChange = e => {
-
         setData({...data, [e.target.name]: e.target.value})
-
     }
+
     const toggleModal = () => {
         history.goBack()
         toggleSignUpModal()

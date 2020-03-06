@@ -1,4 +1,4 @@
-import {ADD_ALL_FOOD} from "../reducers/type"
+import {ADD_ALL_FOOD, ADD_FOOD_ITEM} from "../reducers/type"
 import axios from 'axios'
 import {isLoading} from "./authActions";
 
@@ -24,4 +24,8 @@ export const addAllFood = (page = 1) => dispatch => {
             dispatch(isLoading())
         })
 
+}
+
+export const addFoodItem = (data) => dispatch =>{
+    dispatch({type:ADD_FOOD_ITEM,payload: data})
 }

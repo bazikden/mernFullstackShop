@@ -1,8 +1,10 @@
-import {IS_LOADING, LOGIN, LOGIN_MODAL, LOGOUT, SIGN_UP, SIGN_UP_MODAL} from "./type";
+import {INFO, INFO_MODAL, IS_LOADING, LOGIN, LOGIN_MODAL, LOGOUT, SIGN_UP, SIGN_UP_MODAL} from "./type";
 
 const initialState = {
     signUpModal: false,
     loginModal: false,
+    infoModal: false,
+    infoText: '',
     isAuth: false,
     loginedUser: null,
     token: null,
@@ -23,6 +25,21 @@ export const AuthReducer = (state = initialState, action) => {
                 ...state,
                 loginModal: !state.loginModal
             }
+
+        case INFO_MODAL:
+            debugger
+            return {
+                ...state,
+                infoModal: !state.infoModal,
+            }
+
+        case INFO:
+            return {
+                ...state,
+                infoText: action.payload,
+                infoModal: true
+            }
+
 
         case SIGN_UP:
             return {

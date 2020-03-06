@@ -1,4 +1,4 @@
-import {ADD_ALL_KITCHEN} from "./type"
+import {ADD_ALL_KITCHEN, DEL_KITCHEN_ITEM} from "./type"
 
 const initialState = {
     items: []
@@ -12,11 +12,15 @@ export const kitchenReducer = (state = initialState, action) => {
                 ...state,
                 items: action.payload
             }
-        case "ADD_ITEM":
+
+
+        case DEL_KITCHEN_ITEM: {
             return {
                 ...state,
-                items: [...state.items, action.payload]
+                items: {...state.items, docs: state.items.docs.filter(item => item._id !== action.payload)}
+
             }
+        }
 
         default:
             return state
